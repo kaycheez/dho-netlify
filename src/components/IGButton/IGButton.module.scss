@@ -1,0 +1,12 @@
+.IGButton {
+  width: auto;
+  display: flex;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-shadow: rgba(0, 0, 0, 0.2) 0em 0em 0.5em;
+
+  &:hover {
+    transform: scale(1.1);
+    text-shadow: rgba(0, 0, 0, 0.2) 0m 0.1em 1em;
+  }
+}
