@@ -18,7 +18,9 @@
     "gatsby-remark-copy-linked-files": "^2.0.7",
     "gatsby-remark-images": "^3.1.6",
     "gatsby-remark-relative-images": "^0.3.0",
+    "gatsby-source-cloudinary": "^0.1.11",
     "gatsby-source-filesystem": "^2.0.26",
+    "gatsby-transformer-json": "^2.3.1",
     "gatsby-transformer-remark": "^2.6.9",
     "gatsby-transformer-sharp": "^2.1.9",
     "lodash": "^4.17.15",
@@ -31,6 +33,8 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
+    "react-slick": "^0.25.2",
+    "typeface-lato": "^0.0.75",
     "uuid": "^3.2.1"
   },
   "keywords": [

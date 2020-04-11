@@ -1,123 +1,110 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import styles from './Sidebar.module.scss'
-// import { Link, NavLink, withRouter } from 'react-router-dom';
-// import routes from '../../routes/routes';
 import { Link } from 'gatsby'
 import { IGButton } from 'components/IGButton'
-import { HamburgerIcon } from 'components/HamburgerIcon'
 import { EmailButton } from 'components/EmailButton'
-// import { SlidesContext } from '../../Context/SlidesContext'
+import hamburgerIcon from 'icons/hamburgerDark.svg'
+import closeIcon from 'icons/close.svg'
+import { SlidesContext } from 'src/context'
+import { globalHistory as history } from '@reach/router'
 
-const Sidebar = props => {
-  // const { showSidebar, setShowSidebar } = useContext(SlidesContext)
-
-  const [visibility, setVisibility] = useState({
-    insideElement: { display: 'flex' },
-    isDark: null
-  })
-
-  // useEffect(() => {
-  //   // default state of homepage is hidden sidebar
-  //   if (props.location.pathname === '/') {
-  //     toggleSidebar()
-  //   } else {
-  //     if (!showSidebar) {
-  //       toggleSidebar()
-  //     }
-  //     setVisibility({ isDark: styles.isDark })
-  //   }
-  // }, [props.location.pathname])
+export const Sidebar = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const {
+    location: { pathname },
+    navigate
+  } = history
+  const { isSlideOpen, setIsSlideOpen } = useContext(SlidesContext)
+  const isHome = pathname === '/'
 
   // // menu/back button functionality
-  // const handleClick = () => {
-  //   if (props.location.pathname === '/') {
-  //     toggleSidebar()
-  //   } else {
-  //     props.history.goBack()
-  //   }
-  // }
-
-  // const toggleSidebar = () => {
-  //   if (showSidebar) {
-  //     setVisibility({ insideElement: { display: 'none' } })
-  //   } else {
-  //     setVisibility({ insideElement: { display: 'flex' } })
-  //   }
-
-  //   setShowSidebar(!showSidebar)
-  // }
-
-  const mapPaths = options => {
-    return options.map((route, i) => {
-      return (
-        <div key={i} className={`${styles.categoryItem}`}>
-          {/* <NavLink
-            className={`${styles.hoveringButton} ${styles.hoveringButtonList}`}
-            activeClassName={`${styles.hoveringButtonActive}`}
-            to={route.path}
-          >
-            {route.title}
-          </NavLink> */}
-        </div>
-      )
-    })
+  const handleClick = () => {
+    if (isHome) {
+      // if home toggle nav
+      setIsSidebarOpen(!isSidebarOpen)
+    } else if (isSlideOpen) {
+      // if slides are open, close
+      setIsSlideOpen(false)
+    } else {
+      // if anything else navigate home
+      setIsSlideOpen(false)
+      setIsSidebarOpen(false)
+      navigate('/')
+    }
   }
 
+  const hideSidebar = isHome && !isSidebarOpen
+  const activeStyle = { textDecoration: 'underline' }
+
   return (
-    <nav className={`${styles.sidebar} ${visibility.isDark}`}>
+    <nav className={`${styles.sidebar}`}>
       <header className={`${styles.header}`}>
-        <span
-          className={`${styles.hoveringButton}`}
-          // onClick={() => handleClick()}
-        >
-          <HamburgerIcon
-          // path={props.location.pathname}
-          // showSidebar={props.showSidebar}
-          />
-        </span>
-        <Link to='/' className={`${styles.hoveringButton}`}>
+        <button className={`${styles.hamburger}`} onClick={handleClick}>
+          <img src={isSlideOpen ? closeIcon : hamburgerIcon} alt='menu' />
+        </button>
+        <Link to='/'>
           <h1 className={`${styles.title}`}>
             <span>Visuals By</span>
             <span>David Ho</span>
           </h1>
         </Link>
       </header>
-      <section className={`${styles.section}`} style={visibility.insideElement}>
-        <button className={styles.categoryContainer}>
-          <span className={`${styles.category}`}>Photo</span>
-          <Link
-            className={`${styles.categoryItem} ${styles.hoveringButton} ${styles.hoveringButtonList}`}
-            to='/corporate'
-          >
-            Corporate
-          </Link>
-          <Link
-            className={`${styles.categoryItem} ${styles.hoveringButton} ${styles.hoveringButtonList}`}
-            to='/events'
-          >
-            Events
-          </Link>
-          <Link
-            className={`${styles.categoryItem} ${styles.hoveringButton} ${styles.hoveringButtonList}`}
-            to='/fashion'
-          >
-            Fashion
-          </Link>
-          <Link
-            className={`${styles.categoryItem} ${styles.hoveringButton} ${styles.hoveringButtonList}`}
-            to='/products'
-          >
-            Products
-          </Link>
-        </button>
-      </section>
-      <footer className={`${styles.footer}`} style={visibility.insideElement}>
-        <IGButton text='Instagram' link='https://www.instagram.com/dho.cr2/' />
-        <EmailButton />
-      </footer>
+      <div className={`${styles.content} ${hideSidebar && styles.hide}`}>
+        <section className={`${styles.directory}`}>
+          <span className={`${styles.categoryTitle}`}>Photo</span>
+          <div className={styles.categories}>
+            <Link
+              activeStyle={activeStyle}
+              className={`${styles.category}`}
+              to='/corporate'
+            >
+              Corporate
+            </Link>
+            <Link
+              activeStyle={activeStyle}
+              className={`${styles.category}`}
+              to='/event'
+            >
+              Events
+            </Link>
+            <Link
+              activeStyle={activeStyle}
+              className={`${styles.category}`}
+              to='/fashion'
+            >
+              Fashion
+            </Link>
+            <Link
+              activeStyle={activeStyle}
+              className={`${styles.category}`}
+              to='/product'
+            >
+              Products
+            </Link>
+            <Link
+              activeStyle={activeStyle}
+              className={`${styles.category}`}
+              to='/food'
+            >
+              Food
+            </Link>
+            <Link
+              activeStyle={activeStyle}
+              className={`${styles.category}`}
+              to='/real-estate'
+            >
+              Real Estate
+            </Link>
+          </div>
+        </section>
+        <footer className={`${styles.footer}`}>
+          <IGButton
+            text='Instagram'
+            link='https://www.instagram.com/dho.cr2/'
+          />
+          <EmailButton />
+        </footer>
+      </div>
     </nav>
   )
 }
-
-// export default withRouter(Sidebar)
-export { Sidebar }
