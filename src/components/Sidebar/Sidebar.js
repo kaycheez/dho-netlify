@@ -102,16 +102,16 @@ export const Sidebar = () => {
               <Link
                 activeStyle={activeStyle}
                 className={`${styles.category}`}
-                to='/product'
+                to='/food'
               >
-                Products
+                Food
               </Link>
               <Link
                 activeStyle={activeStyle}
                 className={`${styles.category}`}
-                to='/food'
+                to='/product'
               >
-                Food
+                Products
               </Link>
               <Link
                 activeStyle={activeStyle}

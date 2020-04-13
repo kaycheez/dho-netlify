@@ -1,30 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import { Slideshow } from 'components/Slideshow'
 
 import { Layout } from '../components/Layout'
 
-const IndexPageTemplate = () => {
+export const IndexPageTemplate = ({ data }) => {
+  const nodes = data?.allFile?.nodes.filter(node => node?.childImageSharp)
   return (
     <Layout>
-      <div>
-        <span />
-      </div>
+      <Slideshow nodes={nodes} />
     </Layout>
   )
 }
 
 IndexPageTemplate.propTypes = {}
 
-export { IndexPageTemplate }
 export default IndexPageTemplate
 
-// export const pageQuery = graphql`
-//   query IndexPageTemplate {
-//     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-//       frontmatter {
-//         title
-//       }
-//     }
-//   }
-// `
+export const pageQuery = graphql`
+  query indexTemplate {
+    allFile(filter: { relativePath: { glob: "home/*" } }) {
+      nodes {
+        id
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
+`
