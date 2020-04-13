@@ -1,11 +1,13 @@
 .Grid {
   columns: 1 auto;
-  column-gap: 10px;
-  padding: 10px;
   color: $primary-color-gray;
-
+  margin-top: 100px;
+  
   @media (min-width: $min-tablet) {
     columns: 2 auto;
+    column-gap: 10px;
+    margin-top: 0;
+    padding: 10px;
   }
   @media (min-width: $min-desktop) {
     columns: 3 auto;
@@ -13,7 +15,6 @@
 }
 
 .gridItem {
-  border-radius: 1%;
   display: inline-block;
   height: 100%;
   justify-self: center;
@@ -27,4 +28,9 @@
     cursor: pointer;
     filter: brightness(90%);
   }
+
+
+  @media (min-width: $min-tablet) {
+  border-radius: 1%;
+}
 }
