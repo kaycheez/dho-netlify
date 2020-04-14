@@ -1,7 +1,9 @@
 .sidebar {
-  all: initial;
   * {
-    all: unset;
+    padding: unset;
+    margin: unset;
+    text-decoration: none;
+    color: $dark-gray;
   }
 
   color: $dark-gray;
@@ -90,6 +92,7 @@
 
 .footer {
   font-size: 0.8rem;
+  gap: .5em;
 }
 
 .hamburger {

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styles from './EmailButton.module.scss'
 
 export const EmailButton = () => {
+  const [hasClicked, setHasClicked] = useState(false)
+
   const copyEmailToClipboard = () => {
     let textNode = document.createTextNode('visualsbydavidho@gmail.com')
 
@@ -23,12 +25,20 @@ export const EmailButton = () => {
     textNode.remove()
   }
 
-  const displayCopiedMessage = () => {}
+  const handleClick = () => {
+    copyEmailToClipboard()
+    setHasClicked(true)
+  }
+
+  const tooltipMessage = hasClicked ? 'Copied to clipboard' : 'Click to copy to clipboard'
 
   return (
     <button
       className={styles.EmailButton}
-      onClick={() => copyEmailToClipboard()}
+      onClick={handleClick}
+      role="tooltip"
+      data-microtip-position="right"
+      aria-label={tooltipMessage}
     >
       Contact
     </button>

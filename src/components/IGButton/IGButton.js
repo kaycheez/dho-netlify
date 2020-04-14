@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import styles from './IGButton.module.scss'
 
-export const IGButton = ({ classname, link, text }) => {
+export const IGButton = ({ link, text }) => {
   return (
     <a
-      className={`${classname} ${styles.IGButton}`}
+      className={`${styles.IGButton}`}
       href={link}
       target='_blank'
       rel='noopener noreferrer'
@@ -17,7 +17,6 @@ export const IGButton = ({ classname, link, text }) => {
 }
 
 IGButton.propTypes = {
-  classname: PropTypes.string,
   link: PropTypes.string,
   text: PropTypes.string
 }
