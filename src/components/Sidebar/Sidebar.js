@@ -88,7 +88,7 @@ export const Sidebar = () => {
               <Link
                 activeStyle={activeStyle}
                 className={`${styles.category}`}
-                to='/event'
+                to='/events'
               >
                 Events
               </Link>
