@@ -1,16 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import { Layout } from '../components/Layout'
 import { Gallery } from 'components/Gallery'
 
 export const photosTemplate = ({ data }) => {
   const nodes = data?.allFile?.nodes.filter(node => node?.childImageSharp)
 
   return (
-    <Layout>
       <Gallery nodes={nodes} />
-    </Layout>
   )
 }
 
@@ -31,7 +28,7 @@ export const photosTemplateQuery = graphql`
       nodes {
         id
         childImageSharp {
-          fluid {
+          fluid(maxWidth: 1600) {
             ...GatsbyImageSharpFluid
           }
         }

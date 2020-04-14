@@ -4,6 +4,7 @@
     margin: unset;
     text-decoration: none;
     color: $dark-gray;
+    background: none;
   }
 
   color: $dark-gray;
@@ -21,10 +22,10 @@
   }
   
   &.dark {
-    color: $light-gray;
     height: 100vh;
-
-    > * {
+    
+    * {
+      color: $light-gray;
       z-index: 100;
     }
 

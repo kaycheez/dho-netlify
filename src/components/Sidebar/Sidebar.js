@@ -1,13 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react'
-import styles from './Sidebar.module.scss'
 import { Link } from 'gatsby'
+import { globalHistory as history } from '@reach/router'
+
 import { IGButton } from 'components/IGButton'
 import { EmailButton } from 'components/EmailButton'
-import hamburgerIcon from 'icons/hamburgerDark.svg'
-import closeIcon from 'icons/close.svg'
 import { SlidesContext } from 'src/context'
-import { globalHistory as history } from '@reach/router'
 import { useWindowWidth } from 'src/hooks'
+
+import closeDarkIcon from 'icons/closeDark.svg'
+import closeLightIcon from 'icons/closeLight.svg'
+import hamburgerIcon from 'icons/hamburgerDark.svg'
+import homeIcon from 'icons/home.svg'
+import styles from './Sidebar.module.scss'
 
 export const Sidebar = () => {
   const { isMobile } = useWindowWidth()
@@ -48,8 +52,10 @@ export const Sidebar = () => {
 
   return (
     <nav
-      className={`${styles.sidebar} ${isToggleable &&
-        styles.toggle} ${isDarkTheme && styles.dark}`}
+      className={`
+      ${styles.sidebar} 
+      ${isToggleable && styles.toggle} 
+      ${isDarkTheme && styles.dark}`}
     >
       <div className={styles.sidebarContainer}>
         <header className={`${styles.header}`}>
@@ -58,11 +64,11 @@ export const Sidebar = () => {
               src={
                 isToggleable
                   ? isSidebarOpen
-                    ? closeIcon
+                    ? closeLightIcon
                     : hamburgerIcon
                   : isSlideOpen
-                  ? closeIcon
-                  : hamburgerIcon
+                  ? closeDarkIcon
+                  : homeIcon
               }
               alt='menu'
             />
@@ -81,42 +87,42 @@ export const Sidebar = () => {
               <Link
                 activeStyle={activeStyle}
                 className={`${styles.category}`}
-                to='/corporate'
+                to='/corporate/'
               >
                 Corporate
               </Link>
               <Link
                 activeStyle={activeStyle}
                 className={`${styles.category}`}
-                to='/events'
+                to='/events/'
               >
                 Events
               </Link>
               <Link
                 activeStyle={activeStyle}
                 className={`${styles.category}`}
-                to='/fashion'
+                to='/fashion/'
               >
                 Fashion
               </Link>
               <Link
                 activeStyle={activeStyle}
                 className={`${styles.category}`}
-                to='/food'
+                to='/food/'
               >
                 Food
               </Link>
               <Link
                 activeStyle={activeStyle}
                 className={`${styles.category}`}
-                to='/product'
+                to='/product/'
               >
                 Products
               </Link>
               <Link
                 activeStyle={activeStyle}
                 className={`${styles.category}`}
-                to='/real-estate'
+                to='/real-estate/'
               >
                 Real Estate
               </Link>
