@@ -6,9 +6,7 @@ import { Gallery } from 'components/Gallery'
 export const photosTemplate = ({ data }) => {
   const nodes = data?.allFile?.nodes.filter(node => node?.childImageSharp)
 
-  return (
-      <Gallery nodes={nodes} />
-  )
+  return <Gallery nodes={nodes} />
 }
 
 photosTemplate.propTypes = {

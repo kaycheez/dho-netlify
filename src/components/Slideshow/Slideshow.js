@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import styles from './Slideshow.module.scss'
+import { globalHistory as history } from '@reach/router'
 import Img from 'gatsby-image'
+import {Link} from 'gatsby'
+
+import styles from './Slideshow.module.scss'
 import chevronRight from 'icons/chevron-right.svg'
 import chevronLeft from 'icons/chevron-left.svg'
-import { globalHistory as history } from '@reach/router'
 
 export const Slideshow = ({ nodes, slidesIndex = 0 }) => {
   const [index, setIndex] = useState(slidesIndex)
@@ -30,8 +32,13 @@ export const Slideshow = ({ nodes, slidesIndex = 0 }) => {
     return index === 0 ? setIndex(length) : setIndex(index - 1)
   }
   const currentNode = nodes[index]
-
   const imageStyle = { objectFit: isHome ? 'cover' : 'contain' }
+  const name =
+    currentNode.name === 'real-estate'
+      ? 'Real Estate'
+      : currentNode.name?.charAt(0).toUpperCase().concat(currentNode.name.substring(1))
+
+
 
   return (
     <div className={`${styles.Slideshow} ${styles.home}`}>
@@ -52,6 +59,7 @@ export const Slideshow = ({ nodes, slidesIndex = 0 }) => {
           <img src={chevronRight} alt='right arrow' />
         </button>
       </div>
+      <Link to={`${currentNode.name}/`} className={styles.title}>{name}</Link>
     </div>
   )
 }

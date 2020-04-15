@@ -18,6 +18,7 @@ export const pageQuery = graphql`
     allFile(filter: { relativePath: { glob: "home/*" } }) {
       nodes {
         id
+        name
         childImageSharp {
           fluid(sizes: "(max-width: 770px) calc(100vw * 3), 2000px") {
             ...GatsbyImageSharpFluid
