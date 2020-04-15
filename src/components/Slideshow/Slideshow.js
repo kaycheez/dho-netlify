@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { globalHistory as history } from '@reach/router'
 import Img from 'gatsby-image'
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 
 import styles from './Slideshow.module.scss'
 import chevronRight from 'icons/chevron-right.svg'
@@ -36,9 +36,10 @@ export const Slideshow = ({ nodes, slidesIndex = 0 }) => {
   const name =
     currentNode.name === 'real-estate'
       ? 'Real Estate'
-      : currentNode.name?.charAt(0).toUpperCase().concat(currentNode.name.substring(1))
-
-
+      : currentNode.name
+          ?.charAt(0)
+          .toUpperCase()
+          .concat(currentNode.name.substring(1))
 
   return (
     <div className={`${styles.Slideshow} ${styles.home}`}>
@@ -59,7 +60,11 @@ export const Slideshow = ({ nodes, slidesIndex = 0 }) => {
           <img src={chevronRight} alt='right arrow' />
         </button>
       </div>
-      <Link to={`${currentNode.name}/`} className={styles.title}>{name}</Link>
+      <div className={styles.titleContainer}>
+        <Link to={`${currentNode.name}/`} className={styles.title}>
+          {name}
+        </Link>
+      </div>
     </div>
   )
 }
