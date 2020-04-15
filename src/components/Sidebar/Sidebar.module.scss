@@ -1,12 +1,12 @@
-.sidebar {
-  * {
-    padding: unset;
-    margin: unset;
-    text-decoration: none;
-    color: $dark-gray;
-    background: none;
-  }
+* {
+  padding: unset;
+  margin: unset;
+  text-decoration: none;
+  color: $dark-gray;
+  background: none;
+}
 
+.sidebar {
   color: $dark-gray;
   box-sizing: border-box;
   height: 100vh;

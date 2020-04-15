@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { Slideshow } from 'components/Slideshow'
 
@@ -20,7 +19,7 @@ export const pageQuery = graphql`
       nodes {
         id
         childImageSharp {
-          fluid(maxWidth: 2000) {
+          fluid(sizes: "(max-width: 770px) calc(100vw * 3), 2000px") {
             ...GatsbyImageSharpFluid
           }
         }

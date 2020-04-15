@@ -31,7 +31,7 @@ export const Slideshow = ({ nodes, slidesIndex = 0 }) => {
   }
   const currentNode = nodes[index]
 
-  const imageStyle = isHome ? { objectFit: 'cover' } : { objectFit: 'contain' }
+  const imageStyle = { objectFit: isHome ? 'cover' : 'contain' }
 
   return (
     <div className={`${styles.Slideshow} ${styles.home}`}>
@@ -39,7 +39,7 @@ export const Slideshow = ({ nodes, slidesIndex = 0 }) => {
         <Img
           fluid={currentNode.childImageSharp.fluid}
           key={currentNode.id}
-          // alt={currentNode.name.replace(/-/g, ' ').substring(2)}
+          alt={`slide show ${index + 1}`}
           imgStyle={imageStyle}
           style={{ height: '100%' }}
         />
