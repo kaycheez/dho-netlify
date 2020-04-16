@@ -99,8 +99,10 @@
 
 .hamburger {
   border: none;
-  margin-top: 7px;
+  // margin-top: 7px;
   cursor: pointer;
+  margin: -15px;
+  padding: 22px 15px 15px;
 }
 
 .content {
