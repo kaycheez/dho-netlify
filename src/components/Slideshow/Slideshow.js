@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { globalHistory as history } from '@reach/router'
+import React, { useState, useEffect, useContext } from 'react'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 
@@ -9,17 +8,10 @@ import chevronLeft from 'icons/chevron-left.svg'
 
 export const Slideshow = ({ nodes, slidesIndex = 0 }) => {
   const [index, setIndex] = useState(slidesIndex)
-  const {
-    location: { pathname }
-  } = history
-  const isHome = pathname === '/'
-
   let autoSlideRef
 
   useEffect(() => {
-    if (isHome) {
       autoSlideRef = setTimeout(handleNext, 5000)
-    }
   }, [index])
 
   const length = nodes.length - 1
@@ -32,7 +24,6 @@ export const Slideshow = ({ nodes, slidesIndex = 0 }) => {
     return index === 0 ? setIndex(length) : setIndex(index - 1)
   }
   const currentNode = nodes[index]
-  const imageStyle = { objectFit: isHome ? 'cover' : 'contain' }
   const name =
     currentNode.name === 'real-estate'
       ? 'Real Estate'
@@ -42,13 +33,13 @@ export const Slideshow = ({ nodes, slidesIndex = 0 }) => {
           .concat(currentNode.name.substring(1))
 
   return (
-    <div className={`${styles.Slideshow} ${styles.home}`}>
-      <div className={styles.image}>
+    <div className={styles.Slideshow}>
+      <div className={styles.image} >
         <Img
           fluid={currentNode.childImageSharp.fluid}
           key={currentNode.id}
           alt={`slide show ${index + 1}`}
-          imgStyle={imageStyle}
+          imgStyle={{objectFit: 'cover'}}
           style={{ height: '100%' }}
         />
       </div>

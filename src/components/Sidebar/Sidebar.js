@@ -37,12 +37,8 @@ export const Sidebar = () => {
   const handleClick = () => {
     if (isToggleable) {
       setIsSidebarOpen(!isSidebarOpen)
-    } else if (isSlideOpen) {
-      // if slides are open, close
-      setIsSlideOpen(false)
     } else {
       // if anything else navigate home
-      setIsSlideOpen(false)
       setIsSidebarOpen(false)
       navigate('/')
     }
@@ -66,8 +62,6 @@ export const Sidebar = () => {
                   ? isSidebarOpen
                     ? closeLightIcon
                     : hamburgerIcon
-                  : isSlideOpen
-                  ? closeDarkIcon
                   : homeIcon
               }
               alt='menu'

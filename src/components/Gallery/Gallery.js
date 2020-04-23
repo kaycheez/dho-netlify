@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import styles from './Gallery.module.scss'
 import { Grid } from 'components/Grid'
-import { Slideshow } from 'components/Slideshow'
+import { GallerySlideshow } from 'components/GallerySlideshow'
 import { useMountAndUnmount } from 'src/hooks'
 import { SlidesContext } from 'src/context'
 import { useWindowWidth } from 'src/hooks'
@@ -27,7 +27,7 @@ export const Gallery = ({ nodes }) => {
   return (
     <div className={styles.gallery}>
       {isSlideOpen ? (
-        <Slideshow nodes={nodes} slidesIndex={slidesIndex} />
+        <GallerySlideshow nodes={nodes} slidesIndex={slidesIndex} />
       ) : (
         <Grid nodes={nodes} onClick={handleClick} />
       )}
