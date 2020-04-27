@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 

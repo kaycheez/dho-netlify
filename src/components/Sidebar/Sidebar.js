@@ -1,13 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 import { globalHistory as history } from '@reach/router'
 
 import { IGButton } from 'components/IGButton'
 import { EmailButton } from 'components/EmailButton'
-import { SlidesContext } from 'src/context'
 import { useWindowWidth } from 'src/hooks'
 
-import closeDarkIcon from 'icons/closeDark.svg'
 import closeLightIcon from 'icons/closeLight.svg'
 import hamburgerIcon from 'icons/hamburgerDark.svg'
 import homeIcon from 'icons/home.svg'
@@ -22,7 +20,6 @@ export const Sidebar = () => {
   const isHome = pathname === '/'
   const isToggleable = isHome || isMobile
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-  const { isSlideOpen, setIsSlideOpen } = useContext(SlidesContext)
   const isDarkTheme = isToggleable && isSidebarOpen
 
   useEffect(() => {

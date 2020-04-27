@@ -1,4 +1,5 @@
 import { useMountAndUnmount } from './useMountAndUnmount'
 import { useWindowWidth } from './useWindowWidth'
+import { useKey } from './useKey'
 
-export { useMountAndUnmount, useWindowWidth }
+export { useKey, useMountAndUnmount, useWindowWidth }
